@@ -4,8 +4,6 @@ namespace App\Command;
 
 use App\Entity\User;
 use App\Service\UserManager;
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -36,7 +34,7 @@ class CreateUserCommand extends Command
         $user->setRoles(['ROLE_MANAGER']);
 
         $this->userManager->addAnUserWithManagerRole($user);
-        //TODO write how the process is going
+        //TODO display how the process is going
         return Command::SUCCESS;
     }
 }
