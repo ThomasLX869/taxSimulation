@@ -34,7 +34,6 @@ class CreateUserCommand extends Command
         $user->setRoles(['ROLE_MANAGER']);
 
         $this->userManager->addAnUserWithManagerRole($user);
-        //TODO display how the process is going
         return Command::SUCCESS;
     }
 }

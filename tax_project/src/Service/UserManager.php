@@ -24,19 +24,19 @@ class UserManager
     public function addAnUserWithManagerRole(User $user)
     {
         $user->setPassword($this->encoder->encodePassword($user, $user->getPassword()));
-        //TODO check user data, mail is really unique ? Password is valid as symfony securities rules ? It's really a mail ?
-
         $errors = $this->validator->validate($user);
 
         if (count($errors) > 0) {
 
             $errorsString = (string) $errors;
 
-            return new Response($errorsString);
+            dump($errorsString);
+            return new \Symfony\Component\HttpFoundation\Response($errorsString);
         }
 
         $this->em->persist($user);
         $this->em->flush();
-        return new Response('The user is valid !');
+        dump("The user is valid !");
+        return new \Symfony\Component\HttpFoundation\Response('The user is valid !');
     }
 }
